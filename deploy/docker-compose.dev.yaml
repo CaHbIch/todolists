@@ -37,7 +37,8 @@ services:
       - ./.docker_env:/code/.env
     networks:
       - todolist_db_network
-    command: todolist/manage.py makemigrations && todolist/manage.py migrate
+    command: >
+      sh -c "python manage.py migrate"
 
   db:
     image: postgres:12.4-alpine
