@@ -178,6 +178,3 @@ SPECTACULAR_SETTINGS = {
 # Telegram Bot
 
 TG_TOKEN = os.environ.get('TG_TOKEN')
-
-
-
