@@ -35,10 +35,11 @@ services:
         condition: service_healthy
     volumes:
       - ./.docker_env:/code/.env
+    command: >
+      sh -c "python manage.py makemigrations && 
+            python manage.py migrate"
     networks:
       - todolist_db_network
-    command: >
-      sh -c "python manage.py migrate"
 
   db:
     image: postgres:12.4-alpine

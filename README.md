@@ -41,7 +41,7 @@
    - `docker compose --env-file ../todolist/.env -f docker-compose.db.yaml up -d`
 5. Сделайте миграцию из папки todolist
    - `cd todolist`
-   - `./manage.py makemigraitons`
+   - `./manage.py makemigrations`
    - `./manage.py migrate`
 6. Запустить проект
    - `./manage.py runserver`
