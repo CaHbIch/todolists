@@ -70,10 +70,8 @@ services:
       timeout: 5s
       retries: 5
 
-
 volumes:
   postgres_todolist:
-
 
 networks:
   todolist_db_network:
