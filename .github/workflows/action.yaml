@@ -1,9 +1,6 @@
-name: Build and deploy workflow
-on:
-  push:
-    branches:
-      - telegram
-      - main
+name: Build and deploy action
+on: [ push ]
+
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
