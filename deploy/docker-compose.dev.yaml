@@ -37,8 +37,7 @@ services:
       - ./.docker_env:/code/.env
     networks:
       - todolist_db_network
-    command: >
-      sh -c "python manage.py migrate"
+    command: python manage.py makemigrations && python manage.py migrate
 
   bot:
     build: ../todolist/.
