@@ -41,7 +41,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          source: "deploy/docker-compose.yaml,deploy/.env"
+          source: "deploy/docker-compose.yaml,./.env"
           target: "deploy"
           strip_components: 1
       - name: deploy app
