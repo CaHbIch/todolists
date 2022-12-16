@@ -1,61 +1,59 @@
-# Skypro.Python course
-## Coursework 6 - Todolist
+# Skypro.Python
 
-Backend for task-tracking application
+Бэкэнд для приложения для отслеживания задач
 
-# Description
+# Описание
 
 ### Stack
 
 - django - backend
 - postgresql - database
-- development requirements are specified in todolist/requirements.dev.txt
+- Требования к разработке указаны в todolist/requirements.dev.txt
 
-### Features
+### Функции
+1. Аутентификация и пользователь (основное приложение):
+   - ВК Оаут `(в разработке)`
+   - базовая аутентификация джанго
+   - обновление профиля
+   - изменение пароля
+2.Основной интерфейс (приложение целей):
+   - базовый CRUD с фильтрами и сортировкой: доски, цели, категории, комментарии
+   - пользователь может просматривать элементы, связанные с досками, членом которых он является (владелец, писатель или читатель)
+   - пользователь может создавать категории, цели, комментарии, только если он является владельцем/автором соответствующей доски
+   - пользователь может обновлять, удалять, только если он является владельцем/писателем соответствующей доски
+   - пользователь может обновлять, удалять только свои комментарии
+   - когда доска, категория отмечена как is_deleted, все дочерние категории, цели также отмечены как is_deleted
+3. Бот Telegram (бот-приложение):
+   - пользователю необходимо подтвердить личность с помощью кода подтверждения
+   - пользователь мог просматривать и создавать цели
+   - имя пользователя в телеграмме бота: `(в разработке)`
 
-1. Authentication and User (core app):
-   - VK Oauth
-   - basic django authentication
-   - profile update
-   - password change
-2. Main interface (goals app):
-   - basic CRUD with filters and sorting: boards, goals, categories, comments
-   - user can view items related to the boards he's member of (owner, writer or reader)
-   - user can create categories, goals, comments only if he's owner/writer of the related board
-   - user can update, delete only if he's owner/writer of the related board
-   - user can update, delete only his comments
-   - when board, category is marked as is_deleted, all child categoris, goals are also marked as is_deleted
-3. Telegram bot (bot app):
-   - user need to verify identity using verification code
-   - user could view and create goals
-   - bot telegram username: @TodolistT1000Bot
+## Как запустить проект в среде разработки
 
-## How to launch project in development environment
-
-1. Create virtual environment
-2. Install dependencies from requirements.dev.txt
+1. Создать виртуальную среду
+2. Установить зависимости от requirements.dev.txt
    - `pip install -r todolist/requirements.dev.txt`
-3. Set environment variables in .env file
-   - create .env file in todolist folder
-   - you can copy the default variables from todolist/.env.example
-4. Launch database from deploy folder
+3. Установите переменные среды в .env file
+   - Создайте .env файл в папке todolist
+   - Вы можете скопировать переменные по умолчанию из todolist/.env.example
+4. Запустить базу данных из папки развертывания
    - `cd deploy`
    - `docker compose --env-file ../todolist/.env -f docker-compose.db.yaml up -d`
-5. Make migrations from todolist folder
+5. Сделайте миграцию из папки todolist
    - `cd todolist`
    - `./manage.py makemigraitons`
    - `./manage.py migrate`
-6. Launch project
+6. Запустить проект
    - `./manage.py runserver`
 
-#### Accessing admin site
+#### Доступ к сайту администратора
 
-1. Create admin-user
+1. Создать пользователя-администратора
    - `./manage.py createsuperuser`
-   - set values and required fields
-2. Access admin site at http://127.0.0.1:8000/admin/
+   - установить значения и обязательные поля
+2. Доступ к сайту администратора по адресу http://127.0.0.1:8000/admin/
 
-## How to launch project in development with Docker-compose
+## Как запустить проект в разработку с помощью Docker-compose
 
 1. Создайте файл .docker_env в папке развертывания:
    - вы можете скопировать переменные по умолчанию из todolist/.env.example
@@ -71,20 +69,20 @@ Backend for task-tracking application
 
 ## Deploy
 
-1. Deploy is automated with github actions. 
-2. Project files used:
+1. Deploy автоматизирован с github actions. 
+2. Используемые файлы проекта:
    - actions: .github/workflows/actions.yaml
    - compose file: deploy/docker-compose.ci.yaml
    - env variables: deploy/.ci_env
-   - variables in compose and env files are replaced with github secrets
+   - Переменные в файлах compose и env заменены секретами github
 3. Docker hub images:
    - front: sermalenk/skypro-front:lesson-38
-   - back: kpaveliev/skypro-c06-cw06-todolist:<tag>
-4. To add admin during first launch:
-   - connect to server and access project folder
+   - back: canbi4/todolists:<tag>
+4. Добавить администратора при первом запуске:
+   - подключиться к серверу и получить доступ к папке проекта
    - `docker exec -it <api container_id> /bin/bash`
    - `./manage.py createsuperuser`
-5. Addresses:
+5. Адреса:
    - front: http://todoi.ga
    - admin: http://todoi.ga/admin/
    - swagger: http://todoi.ga/api/schema/swagger-ui/

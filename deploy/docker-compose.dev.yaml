@@ -5,7 +5,7 @@ services:
   frontend:
     image: sermalenk/skypro-front:lesson-38
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
       - db
       - api
@@ -58,7 +58,7 @@ services:
   db:
     image: postgres:12.4-alpine
     volumes:
-      - postgres_avito:/var/lib/postgresql/data
+      - postgres_todolist:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -76,7 +76,7 @@ services:
 
 
 volumes:
-  postgres_avito:
+  postgres_todolist:
 
 
 networks:
