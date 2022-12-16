@@ -37,22 +37,7 @@ services:
       - ./.docker_env:/code/.env
     networks:
       - todolist_db_network
-    command: python manage.py makemigrations && python manage.py migrate
-
-  bot:
-    build: ../todolist/.
-    depends_on:
-      migrations:
-        condition: service_completed_successfully
-      db:
-        condition: service_healthy
-    volumes:
-      - ./.docker_env:/code/.env
-    networks:
-      - todolist_db_network
-    command: >
-      sh -c "python manage.py runbot"
-
+    command: todolist/manage.py makemigrations && todolist/manage.py migrate
 
   db:
     image: postgres:12.4-alpine
