@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    image: sermalenk/skypro-front:lesson-38
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+      - api
+    networks:
+      - todolist_front_network
+
+  api:
+    build: ../todolist/.
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./.docker_env:/code/.env
+    networks:
+      - todolist_front_network
+      - todolist_db_network
+
+
+  migrations:
+    build: ../todolist/.
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.docker_env:/code/.env
+    networks:
+      - todolist_db_network
+    command: >
+      sh -c "python manage.py migrate"
+
+  bot:
+    build: ../todolist/.
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.docker_env:/code/.env
+    networks:
+      - todolist_db_network
+    command: >
+      sh -c "python manage.py runbot"
+
+
+  db:
+    image: postgres:12.4-alpine
+    volumes:
+      - postgres_avito:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - todolist_db_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  postgres_avito:
+
+
+networks:
+  todolist_db_network:
+  todolist_front_network:

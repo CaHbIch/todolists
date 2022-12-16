@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+
+  frontend:
+    image: sermalenk/skypro-front:lesson-38
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+      - api
+    networks:
+      - todolist_front_network
+
+
+  api:
+    image: kpaveliev/skypro-c06-cw06-todolist:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.env:/code/.env
+    networks:
+      - todolist_front_network
+      - todolist_db_network
+
+  migrations:
+    image: kpaveliev/skypro-c06-cw06-todolist:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.env:/code/.env
+    networks:
+      - todolist_db_network
+    command: >
+      sh -c "python manage.py migrate"
+
+  bot:
+    image: kpaveliev/skypro-c06-cw06-todolist:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.env:/code/.env
+    networks:
+      - todolist_db_network
+    restart: always
+    command: >
+      sh -c "python manage.py runbot"
+
+
+  db:
+    image: postgres:12.4-alpine
+    volumes:
+      - postgres_avito:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    restart: always
+    networks:
+      - todolist_db_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+
+volumes:
+  postgres_avito:
+
+
+networks:
+  todolist_db_network:
+  todolist_front_network:
