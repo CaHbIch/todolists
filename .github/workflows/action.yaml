@@ -31,6 +31,7 @@ jobs:
         uses: actions/checkout@v2
       - name: render docker-compose and .env
         run: |
+          mkdir deploy
           export IMAGE_TAG=${{ secrets.IMAGE_TAG }}
           cat deploy/docker-compose.ci.yaml | envsubst > deploy/docker-compose.yaml
           cat deploy/.ci_env | envsubst > deploy/.env
