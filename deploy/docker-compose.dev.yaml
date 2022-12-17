@@ -16,7 +16,7 @@ services:
     build: ../todolist/.
     restart:  always
     env_file:
-      - .env
+      - ./.env
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -35,7 +35,7 @@ services:
       db:
         condition: service_healthy
     env_file:
-      - .env
+      - ./.env
     command: >
       sh -c "python manage.py makemigrations && 
             python manage.py migrate"
