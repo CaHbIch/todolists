@@ -1,5 +1,6 @@
 # custom
 postgres_data/
+deploy/.env
 .docker_env
 
 # Byte-compiled / optimized / DLL files

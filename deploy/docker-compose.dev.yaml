@@ -24,8 +24,6 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
-    volumes:
-      - ./.docker_env:/code/.env
     networks:
       - todolist_front_network
       - todolist_db_network
@@ -38,8 +36,6 @@ services:
         condition: service_healthy
     env_file:
       - .env
-    volumes:
-      - ./.docker_env:/code/.env
     command: >
       sh -c "python manage.py makemigrations && 
             python manage.py migrate"
