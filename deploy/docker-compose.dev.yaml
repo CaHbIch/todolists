@@ -27,6 +27,8 @@ services:
     networks:
       - todolist_front_network
       - todolist_db_network
+    volumes:
+    - ./todolist/:/opt/todolist
 
 
   migrations:
@@ -44,8 +46,6 @@ services:
 
   db:
     image: postgres:12.4-alpine
-    volumes:
-      - postgres_todolist:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -62,6 +62,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    volumes:
+      - postgres_todolist:/var/lib/postgresql/data
 
 
 volumes:
