@@ -17,15 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push
     env:
-      SECRET_KEY: "${{ secrets.SECRET_KEY }}"
-      DEBUG_MODE: ${{ secrets.DEBUG_MODE }}
-      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
-      DB_ENGINE: ${{ secrets.DB_ENGINE }}
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_PORT: ${{ secrets.DB_PORT }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_HOST: ${DB_HOST}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      SECRET_KEY: ${SECRET_KEY}
     steps:
       - name: clone code
         uses: actions/checkout@v2
@@ -33,7 +29,6 @@ jobs:
         run: |
           export IMAGE_TAG=${{ secrets.IMAGE_TAG }}
           cat deploy/docker-compose.ci.yaml | envsubst > deploy/docker-compose.yaml
-          cat deploy/.ci_env | envsubst > deploy/.env
       - name: copy files to server
         uses: appleboy/scp-action@master
         with:

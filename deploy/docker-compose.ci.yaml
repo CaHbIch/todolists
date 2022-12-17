@@ -15,24 +15,33 @@ services:
 
   api:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    restart: always
+    environment:
+      DB_HOST: ${DB_HOST}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       migrations:
         condition: service_completed_successfully
       db:
         condition: service_healthy
-    volumes:
-      - ./.env:/code/.env
     networks:
       - todolist_front_network
       - todolist_db_network
 
   migrations:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    environment:
+      DB_HOST: ${DB_HOST}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+      SECRET_KEY: ${SECRET_KEY}
     depends_on:
       db:
         condition: service_healthy
-    volumes:
-      - ./.env:/code/.env
     command: >
       sh -c "python manage.py makemigrations && 
       python manage.py migrate"
