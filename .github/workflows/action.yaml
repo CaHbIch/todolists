@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push
     env:
-      DB_HOST: ${DB_HOST}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-      SECRET_KEY: ${SECRET_KEY}
+      DB_HOST: ${{ DB_HOST }}
+      POSTGRES_USER: ${{ DB_USER }}
+      POSTGRES_PASSWORD: ${{ DB_PASSWORD }}
+      POSTGRES_DB: ${{ DB_NAME }}
+      SECRET_KEY: ${{ SECRET_KEY }}
     steps:
       - name: clone code
         uses: actions/checkout@v2
