@@ -16,7 +16,6 @@ services:
 
   api:
     build: ../todolist/.
-    restart: always
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -33,7 +32,6 @@ services:
 
   migrations:
     build: ../todolist/.
-    restart: always
     depends_on:
       db:
         condition: service_healthy
