@@ -17,7 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push
     env:
-      DB_HOST: ${{ secrets.DB_HOST }}
       POSTGRES_USER: ${{ secrets.DB_USER }}
       POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
       POSTGRES_DB: ${{ secrets.DB_NAME }}
