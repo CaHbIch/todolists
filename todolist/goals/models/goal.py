@@ -1,8 +1,8 @@
 from django.db import models
 
-from . import Category
+from category import Category
 from .dates_mixin import DatesModelMixin
-from ...core.models import User
+from todolist.core.models import User
 
 
 class Goal(DatesModelMixin):
