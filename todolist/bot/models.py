@@ -1,9 +1,11 @@
 from django.db import models
 
-from core.models import User
+from todolist.core.models import User
 
 
 class TgUser(models.Model):
+    objects = None
+
     class Meta:
         verbose_name = "Пользователь телеграм"
         verbose_name_plural = "Пользователи телеграм"

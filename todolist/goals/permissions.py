@@ -1,6 +1,6 @@
 from rest_framework import permissions
 
-from goals.models import BoardParticipant
+from todolist.goals.models import BoardParticipant
 
 
 class BasePermissionMixin(permissions.IsAuthenticated):

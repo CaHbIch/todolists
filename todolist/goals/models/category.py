@@ -1,11 +1,13 @@
 from django.db import models
 
-from core.models import User
 from .board import Board
 from .dates_mixin import DatesModelMixin
+from ...core.models import User
 
 
 class Category(DatesModelMixin):
+    objects = None
+
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"

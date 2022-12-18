@@ -3,9 +3,9 @@ from rest_framework import permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
-from goals.models import Category, Goal
-from goals.serializers import CategoryCreateSerializer, CategorySerializer
-from goals.permissions import CategoryPermissions
+from todolist.goals.models import Category, Goal
+from todolist.goals.permissions import CategoryPermissions
+from todolist.goals.serializers import CategoryCreateSerializer, CategorySerializer
 
 
 class CategoryCreateView(CreateAPIView):

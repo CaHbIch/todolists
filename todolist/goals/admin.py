@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from goals.models import Category, Goal, Comment, Board
+from todolist.goals.models import Category, Goal, Comment, Board
 
 
 class BaseAdmin(admin.ModelAdmin):

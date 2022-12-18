@@ -1,11 +1,13 @@
 from django.db import models
 
-from core.models import User
-from goals.models import Board
+from . import Board
 from .dates_mixin import DatesModelMixin
+from ...core.models import User
 
 
 class BoardParticipant(DatesModelMixin):
+    objects = None
+
     class Meta:
         unique_together = ("board", "user")
         verbose_name = "Участник"

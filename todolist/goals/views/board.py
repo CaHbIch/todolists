@@ -5,9 +5,9 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDe
 from rest_framework import permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
 
-from goals.models import Board, Goal
-from goals.serializers import BoardCreateSerializer, BoardListSerializer, BoardSerializer
-from goals.permissions import BoardPermissions
+from todolist.goals.models import Board, Goal
+from todolist.goals.permissions import BoardPermissions
+from todolist.goals.serializers import BoardCreateSerializer, BoardListSerializer, BoardSerializer
 
 
 class BoardCreateView(CreateAPIView):

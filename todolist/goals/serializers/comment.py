@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from goals.models import Comment, BoardParticipant
-from core.serializers import RetrieveUpdateSerializer
+from todolist.core.serializers import RetrieveUpdateSerializer
+from todolist.goals.models import Comment, BoardParticipant
 
 
 class CommentCreateSerializer(serializers.ModelSerializer):
