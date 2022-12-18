@@ -1,7 +1,8 @@
 from django.db import models
 
-from board import Board
+
 from dates_mixin import DatesModelMixin
+from goals.models import Board
 from todolist.core.models import User
 
 
