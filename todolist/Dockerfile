@@ -5,8 +5,8 @@ FROM python:3.10-slim
 WORKDIR /code
 
 ## enable DNS proxy to support Docker's 127.x.x.x DNS server
-#ENV CONCOURSE_GARDEN_DNS_PROXY_ENABLE true
-#ENV CONCOURSE_WORKER_GARDEN_DNS_PROXY_ENABLE true
+ENV CONCOURSE_GARDEN_DNS_PROXY_ENABLE true
+ENV CONCOURSE_WORKER_GARDEN_DNS_PROXY_ENABLE true
 
 # install dependencies
 COPY requirements.txt .
