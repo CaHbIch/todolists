@@ -4,6 +4,7 @@ services:
 
   frontend:
     image: sermalenk/skypro-front:lesson-38
+    restart: always
     ports:
       - "8080:80"
     depends_on:
@@ -12,8 +13,10 @@ services:
     networks:
       - todolist_front_network
 
+
   api:
     build: ../todolist/.
+    restart: always
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -30,6 +33,7 @@ services:
 
   migrations:
     build: ../todolist/.
+    restart: always
     depends_on:
       db:
         condition: service_healthy
@@ -43,6 +47,7 @@ services:
 
   bot:
     build: ../todolist/.
+    restart: always
     depends_on:
       migrations:
         condition: service_completed_successfully
