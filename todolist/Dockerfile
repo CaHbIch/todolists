@@ -10,7 +10,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # copy project
-COPY todolist .
+COPY . .
 
 # define the command to run when starting the container
 CMD python manage.py runserver 0.0.0.0:8000
