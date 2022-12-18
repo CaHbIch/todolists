@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   frontend:
-    image: sermalenk/skypro-front:lesson-35
+    image: sermalenk/skypro-front:lesson-38
     ports:
       - "80:80"
     depends_on:
@@ -39,7 +39,8 @@ services:
     env_file:
       - ./.env
     command: >
-      sh -c "python manage.py migrate"
+      sh -c "python manage.py makemigrations && 
+            python manage.py migrate"
     networks:
       - todolist_db_network
 
