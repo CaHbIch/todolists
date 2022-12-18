@@ -86,5 +86,4 @@
    - front: http://todoi.ga
    - admin: http://todoi.ga/admin/
    - swagger: http://todoi.ga/api/schema/swagger-ui/
-   
 

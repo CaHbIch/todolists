@@ -14,9 +14,6 @@ services:
 
   api:
     build: ../todolist/.
-    restart:  always
-    env_file:
-      - ./.env
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -28,7 +25,7 @@ services:
       - todolist_front_network
       - todolist_db_network
     volumes:
-    - ./todolist/:/opt/todolist
+      - ./.docker_env:/code/.env
 
 
   migrations:
@@ -36,13 +33,28 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    env_file:
-      - ./.env
+    networks:
+      - todolist_db_network
+    volumes:
+      - ./.docker_env:/code/.env
     command: >
       sh -c "python manage.py makemigrations && 
             python manage.py migrate"
+
+  bot:
+    build: ../todolist/.
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.docker_env:/code/.env
     networks:
       - todolist_db_network
+    command: >
+      sh -c "python manage.py makemigrations && 
+            python manage.py migrate"
 
   db:
     image: postgres:12.4-alpine
@@ -51,8 +63,6 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     restart: always
-    env_file:
-      - .env
     ports:
       - "5432:5432"
     networks:
