@@ -1,6 +1,6 @@
 from django.db import models
 
-from .dates_mixin import DatesModelMixin
+from dates_mixin import DatesModelMixin
 
 
 class Board(DatesModelMixin):

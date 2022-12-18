@@ -1,8 +1,8 @@
 from django.db import models
 
-from .board import Board
-from .dates_mixin import DatesModelMixin
-from ...core.models import User
+from board import Board
+from dates_mixin import DatesModelMixin
+from todolist.core.models import User
 
 
 class Category(DatesModelMixin):

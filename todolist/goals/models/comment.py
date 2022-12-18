@@ -1,8 +1,8 @@
 from django.db import models
 
-from .goal import Goal
-from .dates_mixin import DatesModelMixin
-from ...core.models import User
+from goal import Goal
+from dates_mixin import DatesModelMixin
+from todolist.core.models import User
 
 
 class Comment(DatesModelMixin):

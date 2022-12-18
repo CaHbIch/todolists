@@ -1,7 +1,7 @@
 from django.db import models
 
 from category import Category
-from .dates_mixin import DatesModelMixin
+from dates_mixin import DatesModelMixin
 from todolist.core.models import User
 
 
