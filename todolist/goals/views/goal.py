@@ -3,10 +3,10 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDe
 from rest_framework import permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
 
-from todolist.goals.filters import GoalDateFilter
-from todolist.goals.models import Goal
-from todolist.goals.permissions import GoalPermissions
-from todolist.goals.serializers import GoalCreateSerializer, GoalSerializer
+from goals.models import Goal
+from goals.serializers import GoalCreateSerializer, GoalSerializer
+from goals.filters import GoalDateFilter
+from goals.permissions import GoalPermissions
 
 
 class GoalCreateView(CreateAPIView):

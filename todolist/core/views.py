@@ -4,8 +4,8 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView,
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from models import User
-from serializers import SignUpSerializer, RetrieveUpdateSerializer, PasswordUpdateSerializer, LoginSerializer
+from .models import User
+from .serializers import SignUpSerializer, RetrieveUpdateSerializer, PasswordUpdateSerializer, LoginSerializer
 
 
 class SignUpView(CreateAPIView):

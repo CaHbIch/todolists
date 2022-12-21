@@ -1,13 +1,11 @@
 from django.db import models
 
-from category import Category
-from dates_mixin import DatesModelMixin
-from todolist.core.models import User
+from core.models import User
+from goals.models import Category
+from .dates_mixin import DatesModelMixin
 
 
 class Goal(DatesModelMixin):
-    objects = None
-
     class Meta:
         verbose_name = "Цель"
         verbose_name_plural = "Цели"

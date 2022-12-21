@@ -1,13 +1,11 @@
 from django.db import models
 
-from goal import Goal
-from dates_mixin import DatesModelMixin
-from todolist.core.models import User
+from core.models import User
+from .goal import Goal
+from .dates_mixin import DatesModelMixin
 
 
 class Comment(DatesModelMixin):
-    objects = None
-
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"

@@ -63,7 +63,7 @@
    - `docker compose --env-file .docker_env -f docker-compose.dev.yaml up -d`
 3. Будет сделано следующее:
    - запустится контейнер postgresql
-   - будут применяться миграции
+   - будут п**рименяться миграции
    - запустится API-контейнер
    - передний контейнер запустится
 
@@ -71,7 +71,7 @@
 
 1. Deploy автоматизирован с github actions. 
 2. Используемые файлы проекта:
-   - actions: .github/workflows/actions.yaml
+   - actions**: .github/workflows/actions.yaml
    - compose file: deploy/docker-compose.ci.yaml
    - env variables: deploy/.ci_env
    - Переменные в файлах compose и env заменены секретами github

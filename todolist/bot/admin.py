@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from todolist.bot.models import TgUser
+from bot.models import TgUser
 
 
 class BotAdmin(admin.ModelAdmin):

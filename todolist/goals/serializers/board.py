@@ -2,7 +2,8 @@ from django.db import transaction
 
 from rest_framework import serializers
 
-from todolist.goals.models import Board, BoardParticipant
+from goals.models import Board, BoardParticipant
+from core.models import User
 
 
 class BoardCreateSerializer(serializers.ModelSerializer):

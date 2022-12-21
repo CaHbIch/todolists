@@ -1,6 +1,5 @@
 from django.urls import path
-
-from todolist.goals import views
+import goals.views as views
 
 urlpatterns = [
     path("goal_category/create", views.CategoryCreateView.as_view()),

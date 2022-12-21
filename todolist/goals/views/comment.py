@@ -3,9 +3,9 @@ from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDe
 from rest_framework import permissions, filters
 from rest_framework.pagination import LimitOffsetPagination
 
-from todolist.goals.models import Comment
-from todolist.goals.permissions import CommentPermissions
-from todolist.goals.serializers import CommentCreateSerializer, CommentSerializer
+from goals.models import Comment
+from goals.serializers import CommentCreateSerializer, CommentSerializer
+from goals.permissions import CommentPermissions
 
 
 class CommentCreateView(CreateAPIView):
