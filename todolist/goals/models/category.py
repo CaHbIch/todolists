@@ -6,6 +6,8 @@ from .dates_mixin import DatesModelMixin
 
 
 class Category(DatesModelMixin):
+    objects = None
+
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"

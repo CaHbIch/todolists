@@ -44,7 +44,7 @@
    - `python manage.py makemigrations`
    - `python manage.py migrate`
 6. Запустить проект
-   - `./manage.py runserver`
+   - `python manage.py runserver`
 
 #### Доступ к сайту администратора
 
@@ -63,7 +63,7 @@
    - `docker compose --env-file .docker_env -f docker-compose.dev.yaml up -d`
 3. Будет сделано следующее:
    - запустится контейнер postgresql
-   - будут п**рименяться миграции
+   - будут применяться миграции
    - запустится API-контейнер
    - передний контейнер запустится
 

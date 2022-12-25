@@ -6,6 +6,8 @@ from .dates_mixin import DatesModelMixin
 
 
 class BoardParticipant(DatesModelMixin):
+    objects = None
+
     class Meta:
         unique_together = ("board", "user")
         verbose_name = "Участник"

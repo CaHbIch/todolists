@@ -6,6 +6,8 @@ from .dates_mixin import DatesModelMixin
 
 
 class Comment(DatesModelMixin):
+    objects = None
+
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
