@@ -7,15 +7,13 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - db
       - api
-    networks:
-      - todolist_front_network
 
 
   api:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
-    restart: always
+    ports:
+      - "5000:8000"
     environment:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -25,9 +23,7 @@ services:
         condition: service_completed_successfully
       db:
         condition: service_healthy
-    networks:
-      - todolist_front_network
-      - todolist_db_network
+
 
   migrations:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
@@ -41,8 +37,6 @@ services:
     command: >
       sh -c "python manage.py makemigrations && 
       python manage.py migrate"
-    networks:
-      - todolist_db_network
 
 
   db:
@@ -64,10 +58,5 @@ services:
 
 volumes:
   postgres_todolist:
-
-networks:
-  todolist_db_network:
-  todolist_front_network:
-
 
 
