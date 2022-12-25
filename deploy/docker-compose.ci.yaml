@@ -45,7 +45,7 @@ services:
         condition: service_healthy
     command: >
       sh -c "python manage.py makemigrations && 
-      python manage.py migrate"
+            python manage.py migrate"
     networks:
       - todolist_db_network
 
@@ -55,9 +55,9 @@ services:
     volumes:
       - postgres_todolist:/var/lib/postgresql/data
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     restart: always
     networks:
       - todolist_db_network
