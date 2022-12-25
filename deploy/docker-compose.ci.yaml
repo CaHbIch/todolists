@@ -27,6 +27,8 @@ services:
         condition: service_completed_successfully
       db:
         condition: service_healthy
+    ports:
+      - "8000:8000"
     networks:
       - todolist_front_network
       - todolist_db_network
