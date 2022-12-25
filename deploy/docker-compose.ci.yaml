@@ -16,6 +16,10 @@ services:
   api:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
     restart: always
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     depends_on:
       migrations:
         condition: service_completed_successfully
@@ -27,11 +31,13 @@ services:
 
   migrations:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     depends_on:
       db:
         condition: service_healthy
-    volumes:
-      - ./.env:/code/.env
     command: >
       sh -c "python manage.py makemigrations && 
       python manage.py migrate"
