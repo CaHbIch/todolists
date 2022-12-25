@@ -36,8 +36,8 @@ services:
     volumes:
       - ./.docker_env:/code/.env
     command: >
-      sh -c "todolist/python manage.py makemigrations && 
-            todolist/python manage.py migrate"
+      sh -c "./manage.py makemigrations && 
+            ./manage.py migrate"
     networks:
       - todolist_db_network
 
