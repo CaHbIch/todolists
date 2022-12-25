@@ -33,7 +33,6 @@ services:
 
   migrations:
     image: $IMAGE_TAG:${GITHUB_REF_NAME}-${GITHUB_RUN_ID}
-    restart: always
     environment:
       DB_HOST: ${DB_HOST}
       DB_USER: ${DB_USER}
@@ -43,21 +42,21 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    networks:
-          - todolist_db_network
     command: >
       sh -c "python manage.py makemigrations && 
-             python manage.py migrate"
+      python manage.py migrate"
+    networks:
+      - todolist_db_network
 
 
   db:
-    image: postgres:14-alpine
+    image: postgres:12.4-alpine
     volumes:
       - postgres_todolist:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
     restart: always
     networks:
       - todolist_db_network
@@ -73,7 +72,6 @@ volumes:
 networks:
   todolist_db_network:
   todolist_front_network:
-
 
 
 

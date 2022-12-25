@@ -5,7 +5,7 @@ services:
   frontend:
     image: sermalenk/skypro-front:lesson-38
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - db
       - api
@@ -21,11 +21,11 @@ services:
         condition: service_healthy
     ports:
       - "8000:8000"
-    volumes:
-      - ./.docker_env:/code/.env
     networks:
       - todolist_front_network
       - todolist_db_network
+    volumes:
+      - ./.docker_env:/code/.env
 
 
   migrations:
@@ -33,18 +33,31 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+      - todolist_db_network
     volumes:
       - ./.docker_env:/code/.env
     command: >
       sh -c "python manage.py makemigrations && 
-             python manage.py migrate"
+            python manage.py migrate"
+
+  bot:
+    build: ../todolist/.
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    volumes:
+      - ./.docker_env:/code/.env
     networks:
       - todolist_db_network
+    command: >
+      sh -c "python manage.py makemigrations && 
+            python manage.py migrate"
 
   db:
-    image: postgres:14-alpine
-    volumes:
-      - postgres_todolist:/var/lib/postgresql/data
+    image: postgres:12.4-alpine
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -59,6 +72,9 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    volumes:
+      - postgres_todolist:/var/lib/postgresql/data
+
 
 
 volumes:
