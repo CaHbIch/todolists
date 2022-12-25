@@ -43,11 +43,11 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    networks:
+          - todolist_db_network
     command: >
       sh -c "python manage.py makemigrations && 
             python manage.py migrate"
-    networks:
-      - todolist_db_network
 
 
   db:
