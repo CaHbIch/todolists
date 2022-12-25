@@ -44,8 +44,7 @@ services:
       db:
         condition: service_healthy
     command: >
-      sh -c "todolist/python manage.py makemigrations && 
-            todolist/python manage.py migrate"
+      sh -c "python manage.py migrate"
     networks:
       - todolist_db_network
 
