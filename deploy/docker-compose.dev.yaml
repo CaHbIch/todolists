@@ -57,7 +57,7 @@ services:
             python manage.py migrate"
 
   db:
-    image: postgres:12.4-alpine
+    image: postgres:14.5-alpine
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
