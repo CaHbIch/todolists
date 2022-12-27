@@ -10,10 +10,6 @@ class DatesModelMixin(models.Model):
     created = models.DateTimeField(verbose_name="Дата создания")
     updated = models.DateTimeField(verbose_name="Дата последнего обновления")
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.id = None
-
     def save(self, *args, **kwargs):
         # when object is created it has no id
         if not self.id:

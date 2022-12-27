@@ -6,8 +6,6 @@ from .dates_mixin import DatesModelMixin
 
 
 class Goal(DatesModelMixin):
-    objects = None
-
     class Meta:
         verbose_name = "Цель"
         verbose_name_plural = "Цели"

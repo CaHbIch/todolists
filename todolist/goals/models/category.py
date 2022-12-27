@@ -6,8 +6,6 @@ from .dates_mixin import DatesModelMixin
 
 
 class Category(DatesModelMixin):
-    objects = None
-
     class Meta:
         verbose_name = "Категория"
         verbose_name_plural = "Категории"
@@ -18,5 +16,4 @@ class Category(DatesModelMixin):
     board = models.ForeignKey(
         Board, verbose_name="Доска", on_delete=models.PROTECT, related_name="categories"
     )
-
 
