@@ -1,6 +1,6 @@
-from django.db import models
+from django.db import models      # type: ignore
 
-from core.models import User
+from core.models import User     # type: ignore
 
 
 class TgUser(models.Model):

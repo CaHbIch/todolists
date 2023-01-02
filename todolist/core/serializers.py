@@ -1,7 +1,7 @@
-from django.contrib.auth.password_validation import validate_password
-from rest_framework import serializers
+from django.contrib.auth.password_validation import validate_password     # type: ignore
+from rest_framework import serializers     # type: ignore
 
-from .models import User
+from .models import User     # type: ignore
 
 
 class SignUpSerializer(serializers.ModelSerializer):

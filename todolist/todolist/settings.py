@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
-import environ
-
+import environ  # type: ignore
 
 env = environ.Env(
     # set default values
@@ -36,7 +35,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG_MODE')
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -86,7 +84,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'todolist.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -140,7 +137,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -151,7 +147,6 @@ TIME_ZONE = 'Europe/Moscow'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -176,5 +171,4 @@ SPECTACULAR_SETTINGS = {
 }
 
 # Telegram Bot
-
 TG_TOKEN = os.environ.get('TG_TOKEN')

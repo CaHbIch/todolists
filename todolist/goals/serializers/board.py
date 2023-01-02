@@ -1,9 +1,9 @@
-from django.db import transaction
+from django.db import transaction     # type: ignore
 
-from rest_framework import serializers
+from rest_framework import serializers     # type: ignore
 
-from goals.models import Board, BoardParticipant
-from core.models import User
+from goals.models import Board, BoardParticipant     # type: ignore
+from core.models import User     # type: ignore
 
 
 class BoardCreateSerializer(serializers.ModelSerializer):

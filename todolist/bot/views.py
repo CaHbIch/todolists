@@ -1,9 +1,9 @@
-from rest_framework import permissions, status
-from rest_framework.generics import GenericAPIView
-from rest_framework.response import Response
+from rest_framework import permissions, status     # type: ignore
+from rest_framework.generics import GenericAPIView     # type: ignore
+from rest_framework.response import Response     # type: ignore
 
-from .models import TgUser
-from .serializers import TgUserUpdateSerializer
+from .models import TgUser     # type: ignore
+from .serializers import TgUserUpdateSerializer     # type: ignore
 
 
 class TgUserUpdateView(GenericAPIView):

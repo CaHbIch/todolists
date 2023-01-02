@@ -1,8 +1,8 @@
-from django.contrib.auth import authenticate, login, logout
-from rest_framework import status
-from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
+from django.contrib.auth import authenticate, login, logout     # type: ignore
+from rest_framework import status     # type: ignore
+from rest_framework.generics import CreateAPIView, RetrieveUpdateDestroyAPIView, UpdateAPIView     # type: ignore
+from rest_framework.permissions import IsAuthenticated     # type: ignore
+from rest_framework.response import Response     # type: ignore
 
 from .models import User
 from .serializers import SignUpSerializer, RetrieveUpdateSerializer, PasswordUpdateSerializer, LoginSerializer

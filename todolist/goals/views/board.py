@@ -1,13 +1,13 @@
-from django.db import transaction
+from django.db import transaction     # type: ignore
 
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework import permissions, filters
-from rest_framework.pagination import LimitOffsetPagination
+from django_filters.rest_framework import DjangoFilterBackend      # type: ignore
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView     # type: ignore
+from rest_framework import permissions, filters     # type: ignore
+from rest_framework.pagination import LimitOffsetPagination     # type: ignore
 
-from goals.models import Board, Goal
-from goals.serializers import BoardCreateSerializer, BoardListSerializer, BoardSerializer
-from goals.permissions import BoardPermissions
+from goals.models import Board, Goal     # type: ignore
+from goals.serializers import BoardCreateSerializer, BoardListSerializer, BoardSerializer     # type: ignore
+from goals.permissions import BoardPermissions     # type: ignore
 
 
 class BoardCreateView(CreateAPIView):

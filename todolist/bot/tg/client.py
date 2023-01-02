@@ -1,6 +1,6 @@
-import requests
+import requests     # type: ignore
 
-from ._dc import GetUpdatesResponse, SendMessageResponse
+from ._dc import GetUpdatesResponse, SendMessageResponse     # type: ignore
 
 
 class TgClient:
@@ -24,7 +24,7 @@ class TgClient:
         }
         response = requests.get(url=url, headers=headers, params=params)
 
-        return GetUpdatesResponse.Schema().load(response.json())
+        return GetUpdatesResponse.Schema().load(response.json()) # type: ignore
 
     def send_message(self, chat_id: int, text: str) -> SendMessageResponse:
         url = self.get_url('sendMessage')
@@ -40,4 +40,4 @@ class TgClient:
         }
         response = requests.post(url=url, headers=headers, json=payload)
 
-        return SendMessageResponse.Schema().load(response.json())
+        return SendMessageResponse.Schema().load(response.json()) # type: ignore

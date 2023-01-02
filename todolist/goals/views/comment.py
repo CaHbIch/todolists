@@ -1,11 +1,11 @@
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework import permissions, filters
-from rest_framework.pagination import LimitOffsetPagination
+from django_filters.rest_framework import DjangoFilterBackend     # type: ignore
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView     # type: ignore
+from rest_framework import permissions, filters     # type: ignore
+from rest_framework.pagination import LimitOffsetPagination     # type: ignore
 
-from goals.models import Comment
-from goals.serializers import CommentCreateSerializer, CommentSerializer
-from goals.permissions import CommentPermissions
+from goals.models import Comment     # type: ignore
+from goals.serializers import CommentCreateSerializer, CommentSerializer     # type: ignore
+from goals.permissions import CommentPermissions     # type: ignore
 
 
 class CommentCreateView(CreateAPIView):

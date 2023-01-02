@@ -1,8 +1,8 @@
-from django.db import models
+from django.db import models     # type: ignore
 
-from core.models import User
-from goals.models import Category
-from .dates_mixin import DatesModelMixin
+from core.models import User     # type: ignore
+from goals.models import Category     # type: ignore
+from .dates_mixin import DatesModelMixin     # type: ignore
 
 
 class Goal(DatesModelMixin):

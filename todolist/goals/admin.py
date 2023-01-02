@@ -1,12 +1,14 @@
-from django.contrib import admin
+from typing import Tuple
 
-from goals.models import Category, Goal, Comment, Board
+from django.contrib import admin  # type: ignore
+
+from goals.models import Category, Goal, Comment, Board  # type: ignore
 
 
 class BaseAdmin(admin.ModelAdmin):
-    list_display = ("title", "user", "created", "updated")
-    search_fields = ("title", "user")
-    readonly_fields = ("created", "updated")
+    list_display: Tuple = ("title", "user", "created", "updated")
+    search_fields: Tuple = ("title", "user")
+    readonly_fields: Tuple = ("created", "updated")
 
 
 class CategoryAdmin(BaseAdmin):

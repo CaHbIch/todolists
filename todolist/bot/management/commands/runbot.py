@@ -1,18 +1,19 @@
-from random import randint
+from random import randint     # type: ignore
+from typing import Any
 
-from django.core.management import BaseCommand
+from django.core.management import BaseCommand     # type: ignore
 
-from todolist.settings import TG_TOKEN
-from goals.models import Goal, Category, BoardParticipant
-from bot.models import TgUser
-from bot.tg import TgClient
-from bot.tg._dc import GetUpdatesResponse
+from todolist.todolist import TG_TOKEN     # type: ignore
+from goals.models import Goal, Category, BoardParticipant     # type: ignore
+from bot.models import TgUser     # type: ignore
+from bot.tg import TgClient     # type: ignore
+from bot.tg._dc import GetUpdatesResponse     # type: ignore
 
 
 class Command(BaseCommand):
     help = 'Start telegram bot'
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.offset = 0
         self.tg_client = TgClient(TG_TOKEN)
         self.response: GetUpdatesResponse
@@ -72,7 +73,7 @@ class Command(BaseCommand):
         if self.message == '/cancel':
             self.category_mode = False
             self.goal_mode = False
-            reply = f'Операция прервана, введите команду'
+            reply: Any = f'Операция прервана, введите команду'
         elif self.category_mode:
             reply = self._choose_category()
         elif self.goal_mode:

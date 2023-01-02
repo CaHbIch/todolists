@@ -1,5 +1,5 @@
-from django.urls import path
-from .views import *
+from django.urls import path     # type: ignore
+from .views import *     # type: ignore
 
 urlpatterns = [
     path('signup', SignUpView.as_view()),

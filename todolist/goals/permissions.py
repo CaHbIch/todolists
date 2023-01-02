@@ -1,6 +1,6 @@
-from rest_framework import permissions
+from rest_framework import permissions    # type: ignore
 
-from goals.models import BoardParticipant
+from goals.models import BoardParticipant  # type: ignore
 
 
 class BasePermissionMixin(permissions.IsAuthenticated):

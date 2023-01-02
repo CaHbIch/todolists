@@ -1,6 +1,6 @@
-from django.db import models
+from django.db import models     # type: ignore
 
-from .dates_mixin import DatesModelMixin
+from .dates_mixin import DatesModelMixin     # type: ignore
 
 
 class Board(DatesModelMixin):

@@ -13,9 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
-from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from django.contrib import admin     # type: ignore
+from django.urls import path, include     # type: ignore
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView     # type: ignore
 
 urlpatterns = [
     path('admin/', admin.site.urls),

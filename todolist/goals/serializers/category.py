@@ -1,7 +1,7 @@
-from rest_framework import serializers
+from rest_framework import serializers     # type: ignore
 
-from goals.models import Category, BoardParticipant
-from core.serializers import RetrieveUpdateSerializer
+from goals.models import Category, BoardParticipant     # type: ignore
+from core.serializers import RetrieveUpdateSerializer     # type: ignore
 
 
 class CategoryCreateSerializer(serializers.ModelSerializer):

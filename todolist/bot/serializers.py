@@ -1,6 +1,6 @@
-from rest_framework import serializers
+from rest_framework import serializers     # type: ignore
 
-from .models import TgUser
+from .models import TgUser     # type: ignore
 
 
 class TgUserUpdateSerializer(serializers.ModelSerializer):

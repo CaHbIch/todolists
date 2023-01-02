@@ -1,5 +1,5 @@
-from django.db import models
-from django.utils import timezone
+from django.db import models     # type: ignore
+from django.utils import timezone     # type: ignore
 
 
 class DatesModelMixin(models.Model):

@@ -1,11 +1,11 @@
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
-from rest_framework import permissions, filters
-from rest_framework.pagination import LimitOffsetPagination
-from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView     # type: ignore
+from rest_framework import permissions, filters     # type: ignore
+from rest_framework.pagination import LimitOffsetPagination     # type: ignore
+from django_filters.rest_framework import DjangoFilterBackend     # type: ignore
 
-from goals.models import Category, Goal
-from goals.serializers import CategoryCreateSerializer, CategorySerializer
-from goals.permissions import CategoryPermissions
+from goals.models import Category, Goal     # type: ignore
+from goals.serializers import CategoryCreateSerializer, CategorySerializer     # type: ignore
+from goals.permissions import CategoryPermissions     # type: ignore
 
 
 class CategoryCreateView(CreateAPIView):
